@@ -125,13 +125,13 @@ function checkCheckbox(input) {
     } else {
         showError(input, 'AGB must be accepted.');
     }
-}
+
 
 if (document.getElementById("checkbox").checked) {
     showSuccess();
 } else {
-    showError('Telephone Number is not valid');
-}
+    showError(input, 'Telephone Number is not valid');
+}}
 
 function validateForm(){
     checkSurname(name, 3, 15);
@@ -145,10 +145,7 @@ function validateForm(){
 
 function validateAllInputs() {
     if (!checkRequired([name, lastname, email, password, repeatPassword, message, checkbox])) {
-        alert("Ihre Daten wurden erfolgreich erfasst.");
-    } else {
-        alert("Bitte korrigieren Sie fehlende Angaben.");
-    }
+        alert("Sie haben alle relevanten Felder ausgefüllt. Bitte korrigieren Sie allfällige Fehler.");
     validateForm();
 
 }
@@ -160,4 +157,4 @@ form.addEventListener('submit', function (e) {
     e.preventDefault();
     //First validate form
     validateForm();
-});
+})};
