@@ -1881,7 +1881,7 @@ output {
 .form-control {
     width: 100%;
     padding: 8px 16px;
-    margin-top: 1rem;
+    margin-top: 3rem;
     background-color: #eee;
     background-image: none;
     border: 1px solid transparent;
@@ -1949,7 +1949,8 @@ input[type=search] {
 }
 
 .form-group {
-    margin-bottom: 15px
+    margin-bottom: 15px;
+    margin-top: 15px !important;
 }
 
 .checkbox, .radio {
@@ -4496,7 +4497,7 @@ button.close {
 }
 
 @-ms-viewport {
-    width: device-width;
+    width: 100%;
 }
 
 .visible-lg, .visible-lg-block, .visible-lg-inline, .visible-lg-inline-block, .visible-md, .visible-md-block, .visible-md-inline, .visible-md-inline-block, .visible-sm, .visible-sm-block, .visible-sm-inline, .visible-sm-inline-block, .visible-xs, .visible-xs-block, .visible-xs-inline, .visible-xs-inline-block {
@@ -4735,7 +4736,7 @@ button.close {
 
 
 .img-responsive logo {
-    justify-content: 50%;
+    justify-content: center;
     align-content: center;
 }
 
@@ -5069,9 +5070,9 @@ body.white {
     margin: 5px;
     position: absolute;
     /* bottom: 0;*/
-    left: 0;
+    left: 7rem;
     visibility: hidden;
-    font-size: .75rem;
+    font-size: 1.25rem;
 }
 
 .form-group.error small {

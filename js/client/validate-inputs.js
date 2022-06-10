@@ -8,15 +8,17 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 const repeatPassword = document.getElementById('passwordRepeat');
 const number = document.getElementById('number');
+const date = document.getElementById('date');
 const message = document.getElementById('message');
-const checkbox = document.getElementById('checkbox');
 const button = document.getElementById('button');
+//const checkbox = document.getElementById('checkbox');
+
 
 // Show input error message
 function showError(input, message) {
     const formControl = input.parentElement;
     const small = formControl.querySelector('small');
-    formControl.className = 'form-control error';
+    formControl.className = 'form-group error';
     small.innerText = message;
 }
 
@@ -118,6 +120,18 @@ function checkTelefon(input) {
     }
 }
 
+// Validierung Geburtsdatum
+function checkDate(input) {
+    const regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[1-9]|2[1-9])$/;
+    if (regex.test(input.value.trim())) {
+        showSuccess(input);
+    } else {
+        showError(input, 'Date ist not Valid. Use this format dd/mm/yy.');
+    }
+}
+
+/*
+
 // Validierung Checkbox
 function checkCheckbox(input) {
     if (input.checked) {
@@ -127,11 +141,14 @@ function checkCheckbox(input) {
     }
 
 
+
 if (document.getElementById("checkbox").checked) {
     showSuccess();
 } else {
     showError(input, 'Telephone Number is not valid');
 }}
+
+ */
 
 function validateForm(){
     checkSurname(name, 3, 15);
@@ -140,11 +157,12 @@ function validateForm(){
     checkPassword(password, 6, 10)
     matchPassword(password, repeatPassword);
     checkTelefon(number);
-    checkCheckbox(checkbox);
+    checkDate(date);
+   // checkCheckbox(checkbox);
 }
 
 function validateAllInputs() {
-    if (!checkRequired([name, lastname, email, password, repeatPassword, message, checkbox])) {
+    if (!checkRequired([name, lastname, email, password, repeatPassword, message, date])) {
         alert("Sie haben alle relevanten Felder ausgefüllt. Bitte korrigieren Sie allfällige Fehler.");
     validateForm();
 
