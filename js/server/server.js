@@ -20,7 +20,7 @@ console.log(`Running at Port ${port}`);
 server.timeout = 1000 * 60 * 2; // 2 minutes
 
 //Warning: Korrekt setzen!!
-const staticPath = './12b_validation_server/03_Solutions/register-server-02/data/';
+const staticPath = './js/server/data';
 const registrationFile = staticPath+'registration.json';
 
 
@@ -57,17 +57,16 @@ app.post('/register', (req, res) => {
     const HTTP_STATUS_NO_ACCEPTABLE = 406;
     //Daten des Posts-Requests auslesen und zusätzlich eine User-id erzeugen
 
-    /* Aufgabe 1
-        a: Fügen Sie Eingabefelder für Vor- und Nachname hinzu
-        b: Fügen Sie ein Eingabefeld für eine Telefonnummer hinzu
-        c: Fügen Sie ein weiteres Passwortfeld (zur Bestätigung des
-            ersten Passworts) hinzu
-     */
+
     let userObj = {
         "id": uuidv4(),
-        "username": req.body.user.username,
+        "name": req.body.user.name,
+        "lastname": req.body.user.lastname,
         "email": req.body.user.email,
-        "password": req.body.user.password
+        "password": req.body.user.password,
+        "passwordRepeat": req.body.user.passwordRepeat,
+        "number": req.body.user.number,
+        "date": req.body.user.date
     }
 
     let result = Validation.validateUser(userObj);
@@ -87,7 +86,7 @@ app.post('/register', (req, res) => {
             .catch(error => {
                 console.error(error);
             });
-        res.status(201).send(`User ${userObj.username} inserted!`);
+        res.status(201).send(`User ${userObj.name} ${userObj.lastname} inserted!`);
     }
 });
 

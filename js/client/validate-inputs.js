@@ -162,7 +162,7 @@ function validateForm(){
 }
 
 function validateAllInputs() {
-    if (!checkRequired([name, lastname, email, password, repeatPassword, message, date])) {
+    if (!checkRequired([name, lastname, email, password, repeatPassword, number, date])) {
         alert("Sie haben alle relevanten Felder ausgefüllt. Bitte korrigieren Sie allfällige Fehler.");
     validateForm();
 

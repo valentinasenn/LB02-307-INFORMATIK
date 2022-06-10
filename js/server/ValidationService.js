@@ -6,9 +6,14 @@ const validateLib = require('./ValidationLib');
  * @param userObj
  * @returns {boolean|{msg: string, isNotValid: boolean}|{isNotValid}|*}
  */
+
+
 function validateUser(userObj) {
     // Check required fields
-    let result = validateLib.checkRequired("username", userObj.username);
+    let result = validateLib.checkRequired("name", userObj.name);
+    if (result.isNotValid) { return result; }
+
+    result = validateLib.checkRequired("lastname", userObj.lastname);
     if (result.isNotValid) { return result; }
 
     result = validateLib.checkRequired("email", userObj.email);
@@ -17,19 +22,44 @@ function validateUser(userObj) {
     result = validateLib.checkRequired("password", userObj.password);
     if (result.isNotValid) { return result; }
 
-    //check length
-    result = validateLib.checkLength("username",userObj.username, 3, 15);
+    result = validateLib.checkRequired("repeatPassword", userObj.passwordRepeat);
     if (result.isNotValid) { return result; }
 
-    result = validateLib.checkLength("password", userObj.password, 6, 25);
+    result = validateLib.checkRequired("number", userObj.number);
+    if (result.isNotValid) { return result; }
+
+    result = validateLib.checkRequired("date", userObj.date);
+    if (result.isNotValid) { return result; }
+
+
+    //check length
+    result = validateLib.checkLength("name",userObj.name, 3, 15);
+    if (result.isNotValid) { return result; }
+
+    result = validateLib.checkLength("lastname", userObj.lastname, 2, 50);
+    if (result.isNotValid) { return result; }
+
+    result = validateLib.checkLength("password", userObj.password, 6, 10);
     if (result.isNotValid) { return result; }
 
     //check email syntax
     result = validateLib.checkEmail("email", userObj.email);
     if (result.isNotValid) { return result; }
 
-    //check mobile
-    result = validateLib.checkMobile("mobile", userObj.number);
+    //check phone
+    result = validateLib.checkTelefon("number", userObj.number);
+    if(result.isNotValid) {return result; }
+
+    //check surname
+    result = validateLib.checkSurname("number", userObj.name);
+    if(result.isNotValid) {return result; }
+
+    //check lastname
+    result = validateLib.checkLastname("lastname", userObj.lastname);
+    if(result.isNotValid) {return result; }
+
+    //check date
+    result = validateLib.checkDate("lastname", userObj.date);
     if(result.isNotValid) {return result; }
 
     

@@ -57,9 +57,3 @@ module.exports = class UserRepository {
 }
 
 
-//export WITHOUT beackets!
-/*
-module.exports = {
-    UserRepository : UserRepository
-}
-*/

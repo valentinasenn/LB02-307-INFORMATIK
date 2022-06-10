@@ -88,29 +88,109 @@ function checkLength(id, input, min, max) {
     return result;
 }
 
-/* Aufgabe 2:
-    Validieren Sie die Mobile-Nummer ähnlich wie bei der Email mit einer
-    Regular expression (regex). Für eine geeignete regex suchen Sie
-    im Internet nach "javascript regular expression for mobile number".
-*/
-// Check phone is valid
+
+// Check Surname
+function checkSurname(id, input){
+    // default: is valid
+    let result = {
+        isNotValid: false,
+        msg: showSuccess(id)
+    }
+    const re = /^[a-z ,.'-]+$/i;
+    if (!re.test(input.trim())) {
+        result = {
+            isNotValid: true,
+            msg: showError(id, 'Your name should only contain letters.')
+        }
+    }
+    return result;
+}
+
+// Check Lastname
+function checkLastname(id, input){
+    // default: is valid
+    let result = {
+        isNotValid: false,
+        msg: showSuccess(id)
+    }
+    const re = /^[a-z ,.'-]+$/i;
+    if (!re.test(input.trim())) {
+        result = {
+            isNotValid: true,
+            msg: showError(id, 'Your lastname should only contain letters.')
+        }
+    }
+    return result;
+}
 
 
-/* Aufgabe 3:
-    Validieren Sie, ob die beiden Passwörter übereinstimmen.
-    Falls sie nicht übereinstimmen, geben Sie (ähnlich wie in den anderen Beispielen)
-    eine Fehlermeldung dem Formular aus.
-*/
+// Check email
+function checkEmail(id, input){
+    // default: is valid
+    let result = {
+        isNotValid: false,
+        msg: showSuccess(id)
+    }
+
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (!re.test(input.trim())) {
+        result = {
+            isNotValid: true,
+            msg: showError(id, 'Email is not valid. Example: example@gmail.com')
+        }
+    }
+    return result;
+}
+
+// Check phone number
+function checkTelefon(id, input){
+    // default: is valid
+    let result = {
+        isNotValid: false,
+        msg: showSuccess(id)
+    }
+
+    const re = /^\d{10}$/;
+
+    if (!re.test(input.trim())) {
+        result = {
+            isNotValid: true,
+            msg: showError(id, 'Telephone Number is not valid')
+        }
+    }
+    return result;
+}
 
 
+// Check Date
+function checkDate(id, input){
+    // default: is valid
+    let result = {
+        isNotValid: false,
+        msg: showSuccess(id)
+    }
+    const re = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[1-9]|2[1-9])$/;
+    if (!re.test(input.trim())) {
+        result = {
+            isNotValid: true,
+            msg: showError(id, 'Date ist not Valid. Use this format dd/mm/yy.')
+        }
+    }
+    return result;
+}
 
 /**
  *  Export validation functions for further usage.
  *  function to export WITHOUT beackets!
  */
+
 module.exports = {
-    checkEmail,
-    checkLength,
     checkRequired,
-    checkMobile
+    checkLength,
+    checkSurname,
+    checkLastname,
+    checkEmail,
+    checkTelefon,
+    checkDate
 };
