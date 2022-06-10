@@ -59,7 +59,7 @@ function validateUser(userObj) {
     if(result.isNotValid) {return result; }
 
     //check date
-    result = validateLib.checkDate("lastname", userObj.date);
+    result = validateLib.checkDate("date", userObj.date);
     if(result.isNotValid) {return result; }
 
     
